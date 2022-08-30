@@ -13,42 +13,34 @@ char *opcode = NULL;
  */
 int main(int argc, char **argv)
 {
-	FILE *monty_file;
-	ssize_t bytes_readed;
-	size_t len = 0, line_number = 1;
-	char *raw_opcode = NULL, *opcode_copy = NULL;
+	size_t line_number = 1;
+	char *cmd = NULL;
 	void (*ins_func)(stack_t **, unsigned int);
 	stack_t *stack = NULL;
 
 	if (argc != 2)
 		print_error_s("USAGE: monty file", "");
 
-	monty_file = fopen(argv[1], "r");
-	if (monty_file == NULL)
-		print_error_s("Error: Can't open file ", argv[1]);
-
-	while ((bytes_readed = getline(&raw_opcode, &len, monty_file)) != -1)
+	while ((opcode = get_opcode(argv[1], line_number)) != NULL)
 	{
-		opcode = strdup(raw_opcode);
-		opcode_copy = strtok(raw_opcode, " \t\r\n");
-		if (opcode_copy == NULL)
+		cmd = strtok(opcode, " \t\r\n");
+		if (cmd == NULL)
 		{
 			line_number++;
+			free(opcode);
 			continue;
 		}
 
-		ins_func = get_ins_func(opcode_copy);
+		ins_func = get_ins_func(cmd);
 		if (ins_func == NULL)
-			print_line_error("unknown instruction ", line_number, opcode_copy);
+			line_error("unknown instruction ", line_number, cmd, stack);
 
 		ins_func(&stack, line_number);
-		
+
 		free(opcode);
 		line_number++;
 	}
 
-	fclose(monty_file);
-	free(raw_opcode);
 	free_stack(stack);
 
 	return (0);

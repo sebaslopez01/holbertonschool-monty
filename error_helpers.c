@@ -24,9 +24,12 @@ void print_error_s(const char *msg, const char *arg)
  *
  * Return: void
  */
-void print_line_error(const char *msg, size_t line_number, const char *arg)
+void line_error(char *msg, size_t line_number, char *arg, stack_t *stack)
 {
 	dprintf(STDERR_FILENO, "L%ld: %s%s\n", line_number, msg, arg);
+	
+	free(opcode);
+	free_stack(stack);
 
 	exit(EXIT_FAILURE);
 }

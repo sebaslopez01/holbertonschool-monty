@@ -52,10 +52,12 @@ typedef struct instruction_s
 /* Prototypes */
 
 void print_error_s(const char *msg, const char *arg);
-void print_line_error(const char *msg, size_t line_number, const char *arg);
+void line_error(char *msg, size_t line_number, char *arg, stack_t *stack);
 void free_stack(stack_t *stack);
 void (*get_ins_func(char *instruction))(stack_t **, unsigned int);
 void ins_push(stack_t **stack, unsigned int line_number);
 void ins_pall(stack_t **stack, unsigned int line_number);
+int contains_letter(const char *str);
+char *get_opcode(const char *filename, size_t line_number);
 
 #endif /* MONTY_H */

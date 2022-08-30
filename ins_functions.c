@@ -4,23 +4,20 @@
 void ins_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
-	char *opcode_val = NULL;
 	int n;
+	char *num_token = NULL;
 
-	if (stack == NULL)
-		return;
+	num_token = strtok(NULL, " \t\r\n");
+	if (num_token == NULL)
+		line_error("usage: push integer", line_number, "", *stack);
 
-	opcode_val = strtok(opcode, " \t\r\n");
-	opcode_val = strtok(NULL, " \t\r\n");
-	if (opcode_val == NULL)
-		print_line_error("usage: push integer", line_number, "");
-	if (*opcode_val == '0')
+	if (!strcmp(num_token, "0") || !strcmp(num_token, "-0"))
 		n = 0;
 	else
 	{
-		n = atoi(opcode_val);
-		if (n == 0)
-			print_line_error("usage: push integer", line_number, "");
+		n = atoi(num_token);
+		if (n == 0 || contains_letter(num_token))
+			line_error("usage: push integer", line_number, "", *stack);
 	}
 
 	new_node = malloc(sizeof(stack_t));
