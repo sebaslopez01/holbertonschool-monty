@@ -60,6 +60,7 @@ void ins_pall(stack_t **stack, unsigned int line_number);
 void ins_pint(stack_t **stack, unsigned int line_number);
 void ins_pop(stack_t **stack, unsigned int line_number);
 void ins_swap(stack_t **stack, unsigned int line_number);
+void ins_add(stack_t **stack, unsigned int line_number);
 int contains_letter(const char *str);
 char *get_opcode(const char *filename, size_t line_number);
 
