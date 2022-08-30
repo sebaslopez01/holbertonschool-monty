@@ -49,7 +49,6 @@ int main(int argc, char **argv)
 
 	fclose(monty_file);
 	free(raw_opcode);
-	free(opcode);
 	free_stack(stack);
 
 	return (0);
