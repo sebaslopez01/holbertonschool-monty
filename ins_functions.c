@@ -1,6 +1,13 @@
 #include "monty.h"
 
-
+/**
+ * ins_push - Executes the push instruction (Pushes an element
+ * to the stack)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ *
+ * Return: void
+ */
 void ins_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
@@ -33,6 +40,12 @@ void ins_push(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * ins_pall - Executes pall instruction (prints all the values
+ * on the stack)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ */
 void ins_pall(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
@@ -40,7 +53,7 @@ void ins_pall(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL)
 		return;
-	
+
 	current = *stack;
 
 	while (current != NULL)

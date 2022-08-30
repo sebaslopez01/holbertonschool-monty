@@ -17,17 +17,18 @@ void print_error_s(const char *msg, const char *arg)
 
 
 /**
- * print_line_error - Prints an error with a number and a string
+ * line_error - Prints an error with a number and a string
  * @msg: Error message
  * @line_number: Line number to print
  * @arg: String to be printed
+ * @stack: stack_t list
  *
  * Return: void
  */
 void line_error(char *msg, size_t line_number, char *arg, stack_t *stack)
 {
 	dprintf(STDERR_FILENO, "L%ld: %s%s\n", line_number, msg, arg);
-	
+
 	free(opcode);
 	free_stack(stack);
 

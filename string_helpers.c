@@ -1,6 +1,13 @@
 #include "monty.h"
 
 
+/**
+ * contains_letter - Verifies if a string contains a character
+ * different to a number
+ * @str: String to verify
+ *
+ * Return: 1 if it contains a letter, 0 otherwise
+ */
 int contains_letter(const char *str)
 {
 	size_t i;
