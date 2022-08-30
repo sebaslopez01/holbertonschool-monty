@@ -32,20 +32,25 @@ int main(int argc, char **argv)
 		opcode = strdup(raw_opcode);
 		opcode_copy = strtok(raw_opcode, " \t\r\n");
 		if (opcode_copy == NULL)
-			break;
+		{
+			line_number++;
+			continue;
+		}
 
 		ins_func = get_ins_func(opcode_copy);
 		if (ins_func == NULL)
 			print_line_error("unknown instruction ", line_number, opcode_copy);
 
 		ins_func(&stack, line_number);
-
+		
+		free(opcode);
 		line_number++;
 	}
 
 	fclose(monty_file);
 	if (opcode)
 		free(opcode);
+	free_stack(stack);
 
 	return (0);
 }
