@@ -15,6 +15,7 @@ void (*get_ins_func(char *instruction))(stack_t **, unsigned int)
 		{"push", ins_push},
 		{"pall", ins_pall},
 		{"pint", ins_pint},
+		{"pop", ins_pop},
 		{NULL, NULL}
 	};
 

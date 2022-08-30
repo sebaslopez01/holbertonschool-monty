@@ -78,3 +78,26 @@ void ins_pint(stack_t **stack, unsigned int line_number)
 
 	printf("%d\n", (*stack)->n);
 }
+
+
+/**
+ * ins_pop - Executes pop instruction (Removes the top element
+ * of the stack)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ */
+void ins_pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *delete_node = NULL;
+
+	if (stack == NULL || *stack == NULL)
+		line_error("can't pop an empty stack", line_number, "", *stack);
+
+	delete_node = *stack;
+
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+
+	free(delete_node);
+}

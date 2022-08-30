@@ -58,6 +58,7 @@ void (*get_ins_func(char *instruction))(stack_t **, unsigned int);
 void ins_push(stack_t **stack, unsigned int line_number);
 void ins_pall(stack_t **stack, unsigned int line_number);
 void ins_pint(stack_t **stack, unsigned int line_number);
+void ins_pop(stack_t **stack, unsigned int line_number);
 int contains_letter(const char *str);
 char *get_opcode(const char *filename, size_t line_number);
 
