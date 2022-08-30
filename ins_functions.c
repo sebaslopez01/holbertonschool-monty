@@ -63,3 +63,18 @@ void ins_pall(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 }
+
+
+/**
+ * ins_pint - Executes pint instruction (prints the value at the top
+ * of the stack, followed by a new line)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ */
+void ins_pint(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || *stack == NULL)
+		line_error("can't pint, stack empty", line_number, "", *stack);
+
+	printf("%d\n", (*stack)->n);
+}
