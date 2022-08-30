@@ -101,3 +101,27 @@ void ins_pop(stack_t **stack, unsigned int line_number)
 
 	free(delete_node);
 }
+
+
+/**
+ * ins_swap - Executes swap instruction (Swaps the top two elements
+ * of the stack)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ */
+void ins_swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *next_node = NULL;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		line_error("can't swap, stack too short", line_number, "", *stack);
+
+	next_node = (*stack)->next;
+
+	(*stack)->next = next_node->next;
+	(*stack)->prev = next_node;
+	next_node->next = (*stack);
+	next_node->prev = NULL;
+
+	*stack = next_node;
+}
