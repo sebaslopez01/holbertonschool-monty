@@ -18,6 +18,10 @@ void (*get_ins_func(char *instruction))(stack_t **, unsigned int)
 		{"pop", ins_pop},
 		{"swap", ins_swap},
 		{"add", ins_add},
+		{"sub", ins_sub},
+		{"div", ins_div},
+		{"mul", ins_mul},
+		{"mod", ins_mod},
 		{"nop", ins_nop},
 		{NULL, NULL}
 	};

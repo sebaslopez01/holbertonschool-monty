@@ -54,6 +54,8 @@ typedef struct instruction_s
 void print_error_s(const char *msg, const char *arg);
 void line_error(char *msg, size_t line_number, char *arg, stack_t *stack);
 void free_stack(stack_t *stack);
+int contains_letter(const char *str);
+char *get_opcode(const char *filename, size_t line_number);
 void (*get_ins_func(char *instruction))(stack_t **, unsigned int);
 void ins_push(stack_t **stack, unsigned int line_number);
 void ins_pall(stack_t **stack, unsigned int line_number);
@@ -61,8 +63,10 @@ void ins_pint(stack_t **stack, unsigned int line_number);
 void ins_pop(stack_t **stack, unsigned int line_number);
 void ins_swap(stack_t **stack, unsigned int line_number);
 void ins_add(stack_t **stack, unsigned int line_number);
+void ins_sub(stack_t **stack, unsigned int line_number);
+void ins_div(stack_t **stack, unsigned int line_number);
+void ins_mod(stack_t **stack, unsigned int line_number);
+void ins_mul(stack_t **stack, unsigned int line_number);
 void ins_nop(stack_t **stack, unsigned int line_number);
-int contains_letter(const char *str);
-char *get_opcode(const char *filename, size_t line_number);
 
 #endif /* MONTY_H */
