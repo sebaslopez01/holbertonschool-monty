@@ -75,3 +75,31 @@ void ins_pstr(stack_t **stack, unsigned int line_number)
 
 	putchar('\n');
 }
+
+
+/**
+ * ins_rotl - Executes the rotl instruction (Rotates the stack to the top)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ *
+ * Return: void
+ */
+void ins_rotl(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	stack_t *current = NULL, *next_node = NULL;
+
+	current = *stack;
+	next_node = (*stack)->next;
+
+	while (current->next != NULL)
+		current = current->next;
+
+	current->next = *stack;
+	(*stack)->next = NULL;
+	(*stack)->prev = current;
+
+	next_node->prev = NULL;
+
+	*stack = next_node;
+}
