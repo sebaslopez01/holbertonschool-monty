@@ -106,3 +106,32 @@ void ins_rotl(stack_t **stack, unsigned int line_number)
 
 	*stack = next_node;
 }
+
+
+/**
+ * ins_rotr - Executes the rotr instruction (Rotates the stack to the bottom)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ *
+ * Return: void
+ */
+void ins_rotr(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	stack_t *current = NULL;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	current = *stack;
+
+	while (current->next != NULL)
+		current = current->next;
+
+	(*stack)->prev = current;
+	current->next = *stack;
+	current->prev->next = NULL;
+	current->prev = NULL;
+
+	*stack = current;
+}
