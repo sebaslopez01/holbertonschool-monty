@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	while ((opcode = get_opcode(argv[1], line_number)) != NULL)
 	{
 		cmd = strtok(opcode, " \t\r\n");
-		if (cmd == NULL)
+		if (cmd == NULL || *cmd == '#')
 		{
 			line_number++;
 			free(opcode);
