@@ -108,7 +108,7 @@ void ins_mul(stack_t **stack, unsigned int line_number)
 	int result;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		line_error("can't mod, stack too short", line_number, "", *stack);
+		line_error("can't mul, stack too short", line_number, "", *stack);
 
 	result = (*stack)->n * (*stack)->next->n;
 	(*stack)->next->n = result;
