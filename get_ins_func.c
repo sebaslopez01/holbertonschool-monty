@@ -23,6 +23,7 @@ void (*get_ins_func(char *instruction))(stack_t **, unsigned int)
 		{"mul", ins_mul},
 		{"mod", ins_mod},
 		{"nop", ins_nop},
+		{"pchar", ins_pchar},
 		{NULL, NULL}
 	};
 

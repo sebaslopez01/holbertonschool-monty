@@ -68,5 +68,6 @@ void ins_div(stack_t **stack, unsigned int line_number);
 void ins_mod(stack_t **stack, unsigned int line_number);
 void ins_mul(stack_t **stack, unsigned int line_number);
 void ins_nop(stack_t **stack, unsigned int line_number);
+void ins_pchar(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
