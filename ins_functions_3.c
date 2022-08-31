@@ -89,6 +89,9 @@ void ins_rotl(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	stack_t *current = NULL, *next_node = NULL;
 
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
 	current = *stack;
 	next_node = (*stack)->next;
 
