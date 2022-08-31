@@ -37,3 +37,41 @@ void ins_pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", n);
 }
+
+
+/**
+ * ins_pstr - Executes the pstr instruction (Prints the string starting at
+ * at the top of the stack, followed by a new line)
+ * @stack: stack_t list
+ * @line_number: Current line number
+ *
+ * Return: void
+ */
+void ins_pstr(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	stack_t *current = NULL;
+	int n;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		putchar('\n');
+		return;
+	}
+
+	current = *stack;
+
+	while (current != NULL)
+	{
+		n = current->n;
+
+		if (n <= 0 || n > 127)
+			break;
+
+		putchar(n);
+
+		current = current->next;
+	}
+
+	putchar('\n');
+}
